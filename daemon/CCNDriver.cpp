@@ -59,7 +59,8 @@ static const char *const SBAS_EVENT_DESCRIPTIONS[] = { NULL, "S0 RDataBeats.", N
 // This class is used only to poll for CCN-5xx configuration and emit events XML for it. All other operations are handled by PerfDriver
 
 static int sys_perf_event_open(struct perf_event_attr *const attr, const pid_t pid, const int cpu, const int group_fd, const unsigned long flags) {
-	return syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
+	return 0;
+	// return syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
 }
 
 static unsigned int getConfig(unsigned int node, unsigned int type, unsigned int event, unsigned int port, unsigned int vc) {

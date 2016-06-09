@@ -37,16 +37,17 @@
 	pea.wakeup_watermark = BUF_SIZE / 2
 
 static int sys_perf_event_open(struct perf_event_attr *const attr, const pid_t pid, const int cpu, const int group_fd, const unsigned long flags) {
-	int fd = syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
-	if (fd < 0) {
-		return -1;
-	}
-	int fdf = fcntl(fd, F_GETFD);
-	if ((fdf == -1) || (fcntl(fd, F_SETFD, fdf | FD_CLOEXEC) != 0)) {
-		close(fd);
-		return -1;
-	}
-	return fd;
+	// int fd = syscall(__NR_perf_event_open, attr, pid, cpu, group_fd, flags);
+	// if (fd < 0) {
+	// 	return -1;
+	// }
+	// int fdf = fcntl(fd, F_GETFD);
+	// if ((fdf == -1) || (fcntl(fd, F_SETFD, fdf | FD_CLOEXEC) != 0)) {
+	// 	close(fd);
+	// 	return -1;
+	// }
+	// return fd;
+	return 0;
 }
 
 PerfGroup::PerfGroup(PerfBuffer *const pb) : mPb(pb) {
